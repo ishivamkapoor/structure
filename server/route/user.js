@@ -1,8 +1,7 @@
 let express=require('express');
 let router = express.Router();
 
-module.exports=()=>{
-    router.use("/",(req, res)=>{
-        res.send("helo user");
-    });
-}
+
+router.get("/",(req, res)=>{res.send("helo user");});
+
+module.exports=router;

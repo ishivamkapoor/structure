@@ -1,10 +1,10 @@
 let express=require('express');
 let router = express.Router();
 
-module.exports = (app)=>{
+const state=require('./route/state');
+const user=require('./route/user');
 
-    router.use("/state",require('./route/state'));
-    router.use("/user",require('./route/user'));
+router.use("/state",state);
+router.use("/user",user);
 
-    return router;
-}
+module.exports = router;
