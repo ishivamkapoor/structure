@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-let state = new Schema({
-    _id:{type: mongoose.Schema.ObjectId, ref:'states'},
+let State = new Schema({
+    _id:{type: mongoose.Schema.ObjectId, ref:'State'},
     state_code:{type:String,required:true,trim:true},
     state_name:{type:String,required:true,trim:true}
 },{
@@ -10,4 +10,4 @@ let state = new Schema({
     versionKey: false
 })
 
-module.exports=mongoose.model('State', state);
+module.exports=mongoose.model('State', State);

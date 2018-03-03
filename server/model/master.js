@@ -6,3 +6,4 @@ let Master=new Schema({
     componentName:{type:String},
     isActive:{type:Boolean}
 });
+module.exports=mongoose.model('Master', Master);

@@ -10,3 +10,4 @@ let Session=new Schema({
     ipAddress:{type:String},
     logedOut:{type:Date}
 });
+module.exports=mongoose.model('Session', Session);

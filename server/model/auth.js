@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 let UseAuth=new Schema({
-    _id:{type: mongoose.Schema.ObjectId, ref:'Session'},
+    _id:{type: mongoose.Schema.ObjectId, ref:'UseAuth'},
     userId:{type:mongoose.Schema.ObjectId,ref:'User'},
     companyId:{type:mongoose.Schema.ObjectId,ref:'Company'},
     masterId:{type:mongoose.Schema.ObjectId,ref:'Master'},
@@ -11,3 +11,4 @@ let UseAuth=new Schema({
     edit:{type:Boolean},
     delete:{type:Boolean}
 });
+module.exports=mongoose.model('UseAuth', UseAuth);

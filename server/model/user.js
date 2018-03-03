@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-let Master=new Schema({
-    _id:{type: mongoose.Schema.ObjectId, ref:'Master'},
+let User=new Schema({
+    _id:{type: mongoose.Schema.ObjectId, ref:'User'},
     username:{type:String},
     password:{type:String},
     fName:{type:String},
@@ -12,3 +12,4 @@ let Master=new Schema({
     avatar:{type:String},
     isActive:{type:Boolean}
 });
+module.exports=mongoose.model('User', User);
