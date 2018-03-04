@@ -8,6 +8,6 @@ let Session=new Schema({
     startTime:{type:Date,default:Date.now()},
     lastActive:{type:Date,default:Date.now()},
     ipAddress:{type:String},
-    logedOut:{type:Date}
+    logedOut:{type:Boolean}
 });
 module.exports=mongoose.model('Session', Session);
