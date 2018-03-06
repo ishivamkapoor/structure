@@ -1,0 +1,10 @@
+module.exports=()=>{
+    require("./session");
+    require("./user");
+    require("./auth");
+    require("./master");
+    require("./year");
+    require("./company");
+    require("./employee");
+    require("./state");
+}
