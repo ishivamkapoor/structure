@@ -7,7 +7,7 @@ module.exports={
     createSession:(userId,ip)=>{
         return new Promise((resolve)=>{
             let time= Date.now();
-            let session = Session.findOne({userId:});
+            let session = Session.findOne({userId:userId});
             if(!session){
                 session=new Session();
             }

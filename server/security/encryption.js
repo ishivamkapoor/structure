@@ -1,18 +1,20 @@
 const crypto = require('crypto');
+
 const secret="meanAcc";
 
 module.exports={
     encrypt:(data)=>{
-        var mykey = crypto.createCipher('aes-128-cbc', secret);
-        var mystr = mykey.update(data, 'utf8', 'hex')
-        mystr += mykey.update.final('hex')
+        const cipher = crypto.createCipher('aes192', 'a password');
 
-        return mystr;
+        let encrypted = cipher.update(data, 'utf8', 'hex');
+        encrypted += cipher.final('hex');
+
+        return encrypted;
     },
     decrypt:(data)=>{
         var mykey = crypto.createDecipher('aes-128-cbc', secret);
-        var mystr = mykey.update(data, 'hex', 'utf8')
-        mystr += mykey.update.final('utf8');
+        var mystr = mykey.update(data, 'hex', 'utf8');
+        //mystr += mykey.update.final('utf8');
 
         return mystr;
     },

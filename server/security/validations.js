@@ -1,13 +1,14 @@
 module.exports={
     minChar(data,size){
-        if(data.length>size){
+        if(data && data.length>=size){
             return true;
         }else{
             return false;
         }
     },
     maxChar(data,size){
-        if(data.length<size){
+        console.log(data.length);
+        if(data && data.length<=size){
             return true;
         }else{
             return false;
