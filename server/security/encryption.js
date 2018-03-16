@@ -19,6 +19,13 @@ module.exports={
         return mystr;
     },
     token:()=>{
-      return crypto.randomBytes().toString("hex");
+        var data=new Date().toISOString();
+        const cipher = crypto.createCipher('aes192', 'a password');
+
+        let encrypted = cipher.update(data, 'utf8', 'hex');
+        encrypted += cipher.final('hex');
+
+        return encrypted;
+
     }
 }

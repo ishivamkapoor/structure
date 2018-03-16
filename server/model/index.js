@@ -1,4 +1,4 @@
-module.exports=()=>{
+module.exports=(app)=>{
     require("./session");
     require("./user");
     require("./auth");
@@ -7,4 +7,6 @@ module.exports=()=>{
     require("./company");
     require("./employee");
     require("./state");
+    console.log("Model Set");
+    return app;
 }

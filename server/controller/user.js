@@ -12,7 +12,7 @@ module.exports={
         //     res.send(message.returnFalse("Username already registered"));
         //     return;
         // }
-
+        console.log(req.body.username);
         //VALIDATE USERNAME
         if(validations.minChar(req.body.username,8) && validations.maxChar(req.body.username,16)){
             user.username=req.body.username;
@@ -44,31 +44,38 @@ module.exports={
         res.send(message.returnTrue({userId:user._id,reply:"User created Successfully"}));
     },
     login:async(req,res)=>{
-        let ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
-        let user= User.findOne({username:req.body.username});
-        if(user){
-            if(user.password==encryption.encrypt(req.body.password)){
-                var sessData = req.session;
-                session.createSession(user._id,ip).then((data)=>{
-                    sessData.token =data.token;
-                    res.send(message.returnTrue("Logged In Successfully"));
-                });
+        var ip = "192.168.2.1";
+        let user= User.findOne({username:req.body.username},(err,user)=>{
+            if(user){
+                if(user.password==encryption.encrypt(req.body.password)){
+                    var sessData = req.session;
+                  //  console.log(ip);
+                    session.createSession(user._id,ip).then((data)=>{
+                        sessData.username=user.username;
+                        sessData.token =data.token;
+                        res.send(message.returnTrue("Logged In Successfully"));
+                    });
+
+                }else {
+                    res.send(message.returnFalse("Invalid Password"));
+                }
             }else {
-                res.send(message.returnFalse("Invalid Password"));
+                res.send(message.returnFalse("Invalid Username"));
             }
-        }else {
-            res.send(message.returnFalse("Invalid Username"));
-        }
+        });
     },
     edit:async(req,res)=>{
-
+        //var sessData = req.session;
+        //console.log(session.checkSession(req,res));
+        //res.send(message.returnTrue("Edit"));
     },
-    checkIfExists:(username)=>{
-        let user= User.findOne({username:username});
-        if(user){
-            return true;
-        }else {
-            return false;
-        }
+    checkIfExists:async (req,res)=>{
+        let user= await User.findOne({username:req.body.username},(err,user)=>{
+            if(user){
+                res.send(message.returnTrue("User Exists"));
+            }else{
+                res.send(message.returnFalse("User does not Exists"));
+            }
+        });
     },
 }

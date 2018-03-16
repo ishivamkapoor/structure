@@ -7,18 +7,22 @@ module.exports={
     createSession:(userId,ip)=>{
         return new Promise((resolve)=>{
             let time= Date.now();
-            let session = Session.findOne({userId:userId});
-            if(!session){
-                session=new Session();
-            }
-            session.token=encryption.token();
-            session.startTime=time;
-            session.lastActive=time;
-            session.ipAddress=ip;
-            session.logedOut=false;
-            session.save();
+            let session = Session.findOne({userId:userId},(err,session)=>{
 
-            resolve(session);
+                if(session ==null){
+                    console.log(session);
+                    session=new Session();
+                }
+                session.userId=userId;
+                session.token=encryption.token();
+                session.startTime=time;
+                session.lastActive=time;
+                session.ipAddress=ip;
+                session.logedOut=false;
+                session.save();
+
+                resolve(session);
+            });
         });
     },
     checkSession: (req,res)=>{
