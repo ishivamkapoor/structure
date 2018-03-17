@@ -51,7 +51,7 @@ module.exports={
                     var sessData = req.session;
                   //  console.log(ip);
                     session.createSession(user._id,ip).then((data)=>{
-                        sessData.username=user.username;
+                        sessData.userId=user._id;
                         sessData.token =data.token;
                         res.send(message.returnTrue("Logged In Successfully"));
                     });
@@ -65,9 +65,33 @@ module.exports={
         });
     },
     edit:async(req,res)=>{
-        //var sessData = req.session;
-        //console.log(session.checkSession(req,res));
-        //res.send(message.returnTrue("Edit"));
+        session.checkSession(req).then((check)=>{
+            if(check.status==false){
+                res.send(check);
+            }else{
+                let user= User.findOne({_id:req.session.userId},(err,user)=>{
+                    //if(validations.minChar(req.body.fName,1) && validations.maxChar(req.body.fName,16)){
+                    //    user.fName=req.body.fName
+                    //}else { res.send(message.returnFalse("Invalid First Name"));return; }
+                    ////VALIDATE LAST NAME
+                    //if(validations.minChar(req.body.lName,1) && validations.maxChar(req.body.lName,16)){
+                    //    user.lName=req.body.lName
+                    //}else { res.send(message.returnFalse("Invalid Last Name"));return; }
+                    ////VALIDATE EMAIL
+                    //if(validations.emailValidate(req.body.eMail)){
+                    //    user.eMail=req.body.eMail
+                    //}else { res.send(message.returnFalse("Invalid eMail"));return; }
+                    ////VALIDATE PHONE NO
+                    //if(validations.minChar(req.body.phoneNo,10) && validations.maxChar(req.body.phoneNo,10)){
+                    //    user.phoneNo=req.body.phoneNoh
+                    //}else { res.send(message.returnFalse("Invalid Phone No"));return; }
+                    //
+                    //user.isActive=true;
+                    //user.save();
+                    res.send(message.returnTrue("User updated Successfully"));
+                });
+            }
+        });
     },
     checkIfExists:async (req,res)=>{
         let user= await User.findOne({username:req.body.username},(err,user)=>{

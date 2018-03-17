@@ -25,28 +25,39 @@ module.exports={
             });
         });
     },
-    checkSession: (req,res)=>{
+    checkSession: (req)=>{
+        console.log(req.session.userId);
+        return new Promise((resolve)=>{
+            let session = Session.findOne({token:req.session.token,userId:req.session.userId},(err,session)=>{
+                if(session){
+                    console.log(session);
+                    if(session.logedOut){
 
-        let session = Session.findOne({token:req.session.token});
-        if(session){
-            if(session.logedOut){
-                res.send(message.returnFalse("You have already Logged Out Login Again"));
-                return;
-
-            }
-            if(new Date(Date.now()-session.lastActive).getHours() >= 1){
-                session.logedOut=true;
-                session.save();
-
-                res.send(message.returnFalse("You have already Logged Out Login Again"));
-                return;
-            }
-            session.lastActive=new Date.now();
-            session.save();
-
-            res.send(message.returnTrue("Session Active"));
-        }else{
-            res.send(message.returnFalse("Please Login"));
-        }
+                        resolve(message.returnFalse("You have already Logged Out Login Again"));
+                    }
+                    //console.log( Date(new Date().toISOString()).getHours());
+                    //var d = new Date(session.lastActive);
+                    //var n = d.getHours();
+                    console.log(Date.now());
+                    console.log(session.lastActive);
+                    console.log(Date.parse(session.lastActive));
+                    difference_ms=Date.now()-session.lastActive;
+                    difference_ms = difference_ms/1000;
+                    difference_ms = difference_ms/60;
+                    var minutes = difference_ms;
+                    console.log(minutes);
+                    if(minutes>60){
+                        session.logedOut=true;
+                        session.save();
+                        resolve (message.returnFalse("You have already Logged Out Login Again"));
+                    }
+                    session.lastActive=new Date().toISOString();
+                    session.save();
+                    resolve(message.returnTrue("Session Active")) ;
+                }else{
+                    resolve( message.returnFalse("Please Login"));
+                }
+            });
+        });
     }
 }

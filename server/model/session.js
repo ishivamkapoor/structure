@@ -5,8 +5,8 @@ let Session=new Schema({
    // _id:{type: mongoose.Schema.ObjectId, ref:'Session'},
     userId:{type:mongoose.Schema.ObjectId,ref:'User'},
     token:{type:String},
-    startTime:{type:Date,default: new Date().toISOString()},
-    lastActive:{type:Date,default:new Date().toISOString()},
+    startTime:{type:Date,default:  Date.now()},
+    lastActive:{type:Date,default: Date.now()},
     ipAddress:{type:String},
     logedOut:{type:Boolean}
 });
