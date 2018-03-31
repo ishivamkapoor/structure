@@ -2,8 +2,8 @@
   background: url("assets/background/login.jpg");
   background-repeat: round;
   display: block;
-  height: 90vh;
-  padding-top: 10vh;
+  height: 80vh;
+  padding: 10vh;
 }
 .login-box{
 
