@@ -3,6 +3,7 @@ const Schema = mongoose.Schema;
 
 let Master=new Schema({
     _id:{type: mongoose.Schema.ObjectId, ref:'Master'},
+    menuName:{type:String},
     componentName:{type:String},
     isActive:{type:Boolean}
 });

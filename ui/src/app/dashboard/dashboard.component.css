@@ -1,0 +1,20 @@
+.wallpaper-wrapper{
+  background: url("assets/background/login.jpg");
+  background-repeat: round;
+  display: block;
+  width: 100vw;
+  height: 90vh;
+  padding: 5vh;
+}
+.login-box{
+
+}
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.example-full-width {
+  width: 100%;
+}
