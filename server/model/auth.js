@@ -5,7 +5,7 @@ let UseAuth=new Schema({
     _id:{type: mongoose.Schema.ObjectId, ref:'UseAuth'},
     userId:{type:mongoose.Schema.ObjectId,ref:'User'},
     companyId:{type:mongoose.Schema.ObjectId,ref:'Company'},
-    masterId:{type:mongoose.Schema.ObjectId,ref:'Master'},
+    masterComponent:{type:String},
     view:{type:Boolean},
     add:{type:Boolean},
     edit:{type:Boolean},

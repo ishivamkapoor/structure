@@ -1,3 +1,40 @@
-<p>
-  signup works!
-</p>
+<div class="wallpaper-wrapper">
+  <div class="col-xs-8 col-sm-6 col-md-8  offset-sm-2 card login-box">
+    <div class="card-header text-center">
+      <h1>Sign Up</h1>
+    </div>
+    <div class="card-body text-center">
+      <div class="col-sm-6 float-left">
+        <mat-form-field class="example-full-width">
+          <input matInput type="email" placeholder="Email" >
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <input matInput type="text" placeholder="Username" >
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <input matInput type="password" placeholder="Password">
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <input matInput type="password" placeholder="Confirm Password">
+        </mat-form-field>
+      </div>
+      <div class="col-sm-6 float-left">
+        <mat-form-field class="example-full-width">
+          <input matInput type="text" placeholder="First Name" >
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <input matInput type="text" placeholder="Last Name" >
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <input matInput type="tel" maxlength="10" placeholder="Phone No." >
+        </mat-form-field>
+      </div>
+      <form class="example-form">
+        <button class="btn col-sm-12 btn-primary" >Register</button>
+      </form>
+    </div>
+    <div class="card-footer text-center">
+      <p>Already registered?.. <a routerLink="/login">Login</a></p>
+    </div>
+  </div>
+</div>

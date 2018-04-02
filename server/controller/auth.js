@@ -7,6 +7,16 @@ module.exports={
 
         });
 
+    },
+    checkUserMasterAuth:(req,master)=>{
+        return new Promise((resolve)=>{
+            let authMenu= auth.findOne({userId:req.session.userId,masterComponent:master},(err,data)=>{
+                if(data==null){
+                    resolve(false);
+                }else{
+                    resolve(data);
+                }
+            });
+        });
     }
-
 }

@@ -13,6 +13,11 @@ import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import {AppRouter} from "./app.router";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {ErrorStateMatcher, ShowOnDirtyErrorStateMatcher} from "@angular/material";
+import { FinancialYearViewComponent } from './financial-year-view/financial-year-view.component';
+import { FinancialYearAddEditComponent } from './financial-year-add-edit/financial-year-add-edit.component';
+import { StateViewComponent } from './state-view/state-view.component';
+import { StateAddEditComponent } from './state-add-edit/state-add-edit.component';
 
 
 @NgModule({
@@ -22,13 +27,19 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
     HeaderComponent,
     FooterComponent,
     LoginComponent,
-    SignupComponent
+    SignupComponent,
+    FinancialYearViewComponent,
+    FinancialYearAddEditComponent,
+    StateViewComponent,
+    StateAddEditComponent
   ],
   imports: [
     BrowserModule,BrowserAnimationsModule,AppRouter,
     MatInputModule,MatButtonModule,
   ],
-  providers: [],
+  providers: [
+    {provide: ErrorStateMatcher, useClass: ShowOnDirtyErrorStateMatcher}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
