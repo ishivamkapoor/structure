@@ -9,6 +9,8 @@ let UseAuth=new Schema({
     view:{type:Boolean},
     add:{type:Boolean},
     edit:{type:Boolean},
-    delete:{type:Boolean}
+    delete:{type:Boolean},
+    toGuest:{type:Boolean},
+    toLoggedIn:{type:Boolean}
 });
 module.exports=mongoose.model('UseAuth', UseAuth);
