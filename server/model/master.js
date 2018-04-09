@@ -2,9 +2,11 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 let Master=new Schema({
-    _id:{type: mongoose.Schema.ObjectId, ref:'Master'},
-    menuName:{type:String},
-    componentName:{type:String},
+
+    menuName:{type:String,trim:true},
+    componentName:{type:String,unique : true, required : true, dropDups: true},
+    toGuest:{type:Boolean},
+    toLoggedIn:{type:Boolean},
     isActive:{type:Boolean}
 });
 module.exports=mongoose.model('Master', Master);

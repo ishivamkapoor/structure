@@ -1,9 +1,10 @@
 const mongoose = require('mongoose');
-const Auth=mongoose.model("Auth");
+const Auth=mongoose.model("UseAuth");
+const Master=mongoose.model("Master");
 const session=require("./session");
 const message=require("../security/message");
 
-module.exports={
+obj={
     getUserMenu:async(req,res)=>{
         if(req.session.userId){
             if(req.session.companyId){
@@ -11,12 +12,12 @@ module.exports={
                     res.send(message.returnTrue(menu));
                 })
             }else{
-                let authMenu=Auth.find({toLoggedIn:true},(err,menu)=>{
+                let authMenu=Master.find({toLoggedIn:true},(err,menu)=>{
                     res.send(message.returnTrue(menu));
                 })
             }
         }else{
-            let authMenu=Auth.find({toGuest:true},(err,menu)=>{
+            let authMenu=Master.find({toGuest:true},(err,menu)=>{
                 res.send(message.returnTrue(menu));
             })
         }
@@ -37,7 +38,7 @@ module.exports={
             if(check.status==false){
                 res.send(check);
             }else{
-                this.checkUserMasterAuth(req,"MasterAuthPermissionViewEdit").then((permission)=>{
+                obj.checkUserMasterAuth(req,"MasterAuthPermissionViewEditComponent").then((permission)=>{
                    if(permission && permission.edit){
                        let auth= new Auth();
                        auth.userId=req.body.userId;
@@ -57,3 +58,4 @@ module.exports={
         });
     }
 }
+module.exports=obj;

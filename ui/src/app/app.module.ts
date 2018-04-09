@@ -18,6 +18,7 @@ import { FinancialYearViewComponent } from './financial-year-view/financial-year
 import { FinancialYearAddEditComponent } from './financial-year-add-edit/financial-year-add-edit.component';
 import { StateViewComponent } from './state-view/state-view.component';
 import { StateAddEditComponent } from './state-add-edit/state-add-edit.component';
+import { MasterAuthPermissionViewEditComponent } from './master-auth-permission-view-edit/master-auth-permission-view-edit.component';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { StateAddEditComponent } from './state-add-edit/state-add-edit.component
     FinancialYearViewComponent,
     FinancialYearAddEditComponent,
     StateViewComponent,
-    StateAddEditComponent
+    StateAddEditComponent,
+    MasterAuthPermissionViewEditComponent
   ],
   imports: [
     BrowserModule,BrowserAnimationsModule,AppRouter,
